@@ -1,0 +1,101 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.restaurants__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+
+.card {
+  @include card;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  position: relative;  
+}
+
+.card__link { display: block; color: inherit; }
+
+.card__image {
+  position: relative;
+  height: 185px;
+  overflow: hidden;
+}
+.card__image img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.card__badge {
+  position: absolute; top: 12px; right: 12px;
+  background: $tertiary;
+  color: #0e7a5c;
+  padding: 6px 10px;
+  border-radius: 2px;
+  font-size: 12px; font-weight: 600;
+}
+
+.card__content {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 14px 14px;
+}
+.card__title { font-size: 16px; font-weight: 700; color: $text-dark; }
+.card__subtitle { color: $text-muted; font-size: 14px; }
+
+.card__checkbox {
+  display: none;
+}
+
+/* Le cœur */
+.card__heart {
+  position: absolute;     
+  bottom: 30px;            
+  right: 25px;             
+  font-size: 25px;
+  cursor: pointer;
+  width: 30px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;             
+  background: white;       
+  border-radius: 50%;
+  padding: 5px;
+}
+
+/* Cœur vide (visible par défaut) */
+.card__heart .fa-regular {
+  color: $text-dark;
+}
+
+/* Cœur plein (caché par défaut) */
+.card__heart .fa-solid {
+  display: none;
+  background: linear-gradient(175deg, $secondary 0%, $primary 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Quand checkbox cochée : cœur plein visible */
+.card__checkbox:checked + .card__heart .fa-regular {
+  display: none;
+}
+
+.card__checkbox:checked + .card__heart .fa-solid {
+  display: inline;
+}
+.card__heart[aria-pressed="true"] .fa-regular { display: none; }
+.card__heart[aria-pressed="true"] .fa-solid   { display: inline-block; }
+
+/* tablette : 2 colonnes */
+@media (min-width: $bp-tablet) {
+  .restaurants__grid { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+}
+/* desktop : 4 colonnes si tu veux, sinon 2 ou 3 selon maquette */
+@media (min-width: $bp-desktop) {
+  .restaurants__grid { grid-template-columns: repeat(4, 1fr); }
+}

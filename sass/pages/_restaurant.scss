@@ -1,0 +1,257 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* ==================== HEADER AVEC FLÈCHE ==================== */
+.header--with-arrow {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__back {
+  position: absolute;
+  left: 20px;
+  color: $text-dark;
+  font-size: 20px;
+  
+  &:hover {
+    color: $primary;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==================== HERO IMAGE ==================== */
+.restaurant-hero {
+  width: 100%;
+  height: 275px;
+  overflow: hidden;
+  
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* ==================== RESTAURANT MAIN ==================== */
+.restaurant {
+  background: $bg-soft;
+  border-radius: 40px 40px 0 0;
+  margin-top: -40px;
+  position: relative;
+  padding: 32px 0 40px;
+}
+
+.restaurant__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 $gutter-mobile;
+  margin-bottom: 40px;
+}
+
+.restaurant__title {
+  font-family: $font-logo;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+/* Cœur favori du restaurant */
+.restaurant__checkbox {
+  display: none;
+}
+
+.restaurant__heart {
+  font-size: 22px;
+  cursor: pointer;
+  position: relative;
+  
+  .fa-regular {
+    color: $text-dark;
+    transition: opacity 0.3s;
+  }
+  
+  .fa-solid {
+    position: absolute;
+    right: 0;
+    background: linear-gradient(180deg, $secondary, $primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+.restaurant__checkbox:checked + .restaurant__heart {
+  .fa-regular {
+    opacity: 0;
+  }
+  
+  .fa-solid {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==================== MENU ==================== */
+.menu {
+  padding: 0 $gutter-mobile;
+}
+
+.menu__section {
+  margin-bottom: 40px;
+}
+
+.menu__category {
+  font-size: 16px;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: $text-muted;
+  margin-bottom: 12px;
+  position: relative;
+  padding-bottom: 8px;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background: $tertiary;
+  }
+}
+
+/* ==================== MENU ITEM ==================== */
+.menu-item {
+  @include card;
+  display: flex;
+  margin-bottom: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  
+  &__content {
+    flex: 1;
+    padding: 8px;          
+    min-width: 0;
+  }
+  
+  &__title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 2px;      
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  &__description {
+    font-size: 15px;
+    font-weight: 300;
+    color: $text-muted;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  &__price {
+    display: flex;
+    align-items: flex-end;
+    padding: 12px 15px 10px 0; 
+    font-weight: 700;
+    font-size: 15px;
+  }
+  
+  &__check {
+    background: $tertiary;
+    width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: width 0.4s ease-in-out;
+    
+    i {
+      color: white;
+      font-size: 20px;
+      transform: rotate(0deg);
+      transition: transform 0.4s ease-in-out;
+    }
+  }
+  
+  &:hover &__check {
+    width: 60px;
+    
+    i {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* ==================== BOUTON COMMANDER ==================== */
+.restaurant__order {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 0 $gutter-mobile;
+  
+  .btn {
+    padding: 16px 50px;
+  }
+}
+
+/* ==================== RESPONSIVE TABLETTE ==================== */
+@media (min-width: $bp-tablet) {
+  .restaurant-hero {
+    height: 380px;
+  }
+  
+  .restaurant__header {
+    justify-content: center;
+    gap: 24px;
+  }
+  
+  .restaurant__title {
+    font-size: 32px;
+  }
+  
+  .menu {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 $gutter-tablet;
+  }
+  
+  .restaurant__order {
+    padding: 0 $gutter-tablet;
+  }
+}
+
+/* ==================== RESPONSIVE DESKTOP ==================== */
+@media (min-width: $bp-desktop) {
+  .restaurant-hero {
+    height: 450px;
+  }
+  
+  .menu {
+    max-width: 900px;
+    padding: 0 $gutter-desktop;
+  }
+  
+  .restaurant__order {
+    padding: 0 $gutter-desktop;
+  }
+}

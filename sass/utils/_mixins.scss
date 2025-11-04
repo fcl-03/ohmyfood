@@ -1,0 +1,35 @@
+@use "variables" as *;
+
+@mixin container {
+  margin: 0 auto;
+  max-width: 480px;
+  padding-left: $gutter-mobile;
+  padding-right: $gutter-mobile;
+
+  @media (min-width: $bp-tablet)  {
+    max-width: 720px;
+    padding-left: $gutter-tablet;
+    padding-right: $gutter-tablet;
+  }
+  @media (min-width: $bp-desktop) {
+    max-width: 960px;
+    padding-left: $gutter-desktop;
+    padding-right: $gutter-desktop;
+  }
+  @media (min-width: $bp-lg) {
+    max-width: 1140px;
+  }
+}
+
+
+@mixin card {
+  background:#fff;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  overflow: hidden;
+}
+
+@mixin gradient-cta {
+  background: linear-gradient(180deg, $secondary, $primary);
+  color: $text-light;
+}

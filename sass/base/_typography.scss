@@ -1,0 +1,6 @@
+@use "../utils/variables" as *;
+
+.section-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+h1 { font-size: 28px; font-weight: 700; }
+h2 { font-size: 22px; font-weight: 700; }
+p  { color: $text-muted; }

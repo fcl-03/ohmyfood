@@ -1,0 +1,21 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: $radius-pill;
+  font-weight: 500;
+}
+.btn--cta {
+  @include gradient-cta;
+  padding: 10px 22px;                           // bouton un peu plus compact
+  border-radius: 999px;
+  box-shadow: 0 8px 16px rgba(147,86,220,.20);  // ombre plus discrète
+  font-weight: 600;
+  transition: filter .15s ease;
+}
+
+.hero .btn { display: inline-flex; margin: 10px auto 0; }  // centre le bouton
+
+.btn--cta:hover { filter: brightness(.95); }

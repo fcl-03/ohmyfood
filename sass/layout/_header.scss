@@ -1,0 +1,32 @@
+@use "../utils/variables" as *;
+
+.header {
+  padding: 18px 0;
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  /* ULTRA légère */
+}
+
+.header__logo {
+  font-family: $font-logo;
+  font-size: 28px;
+  line-height: 1;
+  color: #101010;
+  font-weight: 700;
+}
+
+@media (min-width: $bp-desktop) {
+
+  /* Header & Location - ENLEVER les ombres */
+  .header {
+    box-shadow: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .header__logo {
+    font-size: 35px;
+  }
+}

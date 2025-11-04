@@ -1,19 +1,20 @@
-// Utils
-@import 'utils/variables';
-@import 'utils/mixins';
+/* Utils */
+@use "utils/variables";
+@use "utils/mixins";
 
-// Base
-@import 'base/reset';
-@import 'base/typography';
+/* Base */
+@use "base/reset";
+@use "base/typography";
 
-// Components
-@import 'components/buttons';
-@import 'components/cards';
+/* Layout */
+@use "layout/container";
+@use "layout/header";
+@use "layout/footer";
 
-// Layout
-@import 'layout/header';
-@import 'layout/footer';
+/* Components */
+@use "components/buttons";
+@use "components/cards";
 
-// Pages
-@import 'pages/home';
-@import 'pages/restaurant';
+/* Pages */
+@use "pages/home";
+@use "pages/restaurant";
