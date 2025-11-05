@@ -68,32 +68,87 @@
   font-weight: 400;
 }
 
-/* Cœur favori du restaurant */
+/* ========================================
+   ANIMATION DU CŒUR (PAGE RESTAURANT)
+   ======================================== */
+
+// Cacher la checkbox
 .restaurant__checkbox {
-  display: none;
+    display: none;
 }
 
+// Container du cœur
 .restaurant__heart {
-  font-size: 22px;
-  cursor: pointer;
-  position: relative;
-  
-  .fa-regular {
-    color: $text-dark;
-    transition: opacity 0.3s;
-  }
-  
-  .fa-solid {
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+// Les deux icônes superposées
+.restaurant__heart i {
     position: absolute;
-    right: 0;
-    background: linear-gradient(180deg, $secondary, $primary);
+    transition: all 0.4s ease-in-out;
+}
+
+/* Cœur VIDE (visible par défaut) */
+.restaurant__heart .fa-regular {
+    opacity: 1;
+    transform: scale(1);
+    color: $text-dark;
+}
+
+/* Cœur PLEIN (caché par défaut) */
+.restaurant__heart .fa-solid {
+    opacity: 0;
+    transform: scale(0);
+    background: linear-gradient(175deg, $secondary 0%, $primary 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+/* Animation au HOVER */
+.restaurant__heart:hover .fa-regular {
     opacity: 0;
     transform: scale(0);
-    transition: all 0.3s ease-in-out;
-  }
+}
+
+.restaurant__heart:hover .fa-solid {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Animation quand CHECKED (clic) */
+.restaurant__checkbox:checked + .restaurant__heart .fa-regular {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.restaurant__checkbox:checked + .restaurant__heart .fa-solid {
+    opacity: 1;
+    transform: scale(1);
+    animation: heartBeat 0.5s ease-in-out;
+}
+
+/* Keyframes : effet de battement */
+@keyframes heartBeat {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .restaurant__checkbox:checked + .restaurant__heart {

@@ -36,7 +36,7 @@
   position: relative;
   z-index: 1;
 }
-.hero__content { @include container; max-width: 540px; text-align: center;}
+.hero__content { max-width: 540px; text-align: center; @include container; }
 .hero__title { margin-bottom: 10px; font-size: 24px; line-height: 1.25; }
 .hero__subtitle { margin-bottom: 16px; }
 .hero .btn { transform: translateZ(0); }
@@ -93,7 +93,7 @@
 
 /* Restaurants */
 .restaurants { background: $bg-soft; padding: 28px 0; }
-.restaurants .container { @include container; margin-bottom: 40px;}
+.restaurants .container { margin-bottom: 40px; @include container;}
 
 /* ========================================
    RESPONSIVE DESKTOP (1024px+)
