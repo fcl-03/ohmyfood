@@ -1,6 +1,40 @@
 @use "../utils/variables" as *;
 @use "../utils/mixins" as *;
 
+/* ========================================
+   ANIMATION D'APPARITION DES PLATS
+   ======================================== */
+
+// Les plats sont invisibles au chargement
+.menu-item {
+  opacity: 0;
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+// Délai progressif pour chaque plat
+.menu-item:nth-child(1) { animation-delay: 0.1s; }
+.menu-item:nth-child(2) { animation-delay: 0.2s; }
+.menu-item:nth-child(3) { animation-delay: 0.3s; }
+.menu-item:nth-child(4) { animation-delay: 0.4s; }
+.menu-item:nth-child(5) { animation-delay: 0.5s; }
+.menu-item:nth-child(6) { animation-delay: 0.6s; }
+.menu-item:nth-child(7) { animation-delay: 0.7s; }
+.menu-item:nth-child(8) { animation-delay: 0.8s; }
+.menu-item:nth-child(9) { animation-delay: 0.9s; }
+.menu-item:nth-child(10) { animation-delay: 1s; }
+
+// Animation : slide depuis le bas + fade in
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ==================== HEADER AVEC FLÈCHE ==================== */
 .header--with-arrow {
   position: relative;
